@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "*** Setting up the LED"
+java raspberry.Raspi setup
+echo "*** Turning the LED On"
+java raspberry.Raspi on
+echo "*** Displaying the LED status"
+java raspberry.Raspi status
+echo "*** On -- Sleeping for 2 seconds"
+sleep 2
+java raspberry.Raspi off
+echo "*** Off -- Sleeping for 2 seconds"
+sleep 2
+echo "*** Close the GPIO entry (the LED may remain on)"
+java raspberry.Raspi close
