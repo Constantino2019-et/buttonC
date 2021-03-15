@@ -34,9 +34,9 @@ public class LEDExample {
         System.out.println("Turning the LED " + args[0]);
         writeSysfs("value", args[0].equalsIgnoreCase("On")? "1":"0", GPIO4_PATH);
      }
-	 else  if (args[0].equalsIgnoreCase("fanOn") || args[0].equalsIgnoreCase("fanOff")){
-        System.out.println("Turning the fan " + args[0]);
-        writeSysfs("value", args[0].equalsIgnoreCase("fanOn")? "1":"0", GPIO17_PATH);
+    else if (args[0].equalsIgnoreCase("fanOn") || args[0].equalsIgnoreCase("fanOff")){
+	System.out.println("Turning the fan " + args[0]);
+	writeSysfs("value", args[0].equalsIgnoreCase("fanOn")? "1":"0", GPIO17_PATH);
      }
      else if (args[0].equalsIgnoreCase("setup")){
         System.out.println("Setting up the LED and FAN");
@@ -58,7 +58,7 @@ public class LEDExample {
         } catch(InterruptedException e){}
         writeSysfs("direction", "out", GPIO17_PATH);
      }
-	  else if (args[0].equalsIgnoreCase("fanclose")){
+    else if (args[0].equalsIgnoreCase("fanclose")){
         System.out.println("Closing down the LED");
         writeSysfs("unexport", "17", GPIO_SYSFS);
      }
