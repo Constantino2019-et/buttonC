@@ -8,7 +8,7 @@ import java.io.*;
 public class LEDExample {
 
   private static String GPIO4_PATH = "/sys/class/gpio/gpio4/";
-  private static String GPIO14_PATH = "/sys/class/gpio/gpio14/";
+  private static String GPIO17_PATH = "/sys/class/gpio/gpio17/";
   private static String GPIO_SYSFS = "/sys/class/gpio/";
 
   private static void writeSysfs(String filename, String value, String path){
@@ -36,7 +36,7 @@ public class LEDExample {
      }
 	 else  if (args[0].equalsIgnoreCase("fanOn") || args[0].equalsIgnoreCase("fanOff")){
         System.out.println("Turning the fan " + args[0]);
-        writeSysfs("value", args[0].equalsIgnoreCase("fanOn")? "1":"0", GPIO14_PATH);
+        writeSysfs("value", args[0].equalsIgnoreCase("fanOn")? "1":"0", GPIO17_PATH);
      }
      else if (args[0].equalsIgnoreCase("setup")){
         System.out.println("Setting up the LED and FAN");
@@ -52,15 +52,15 @@ public class LEDExample {
      }
 	  else if (args[0].equalsIgnoreCase("fansetup")){
         System.out.println("Setting up the LED and FAN");
-        writeSysfs("export", "14", GPIO_SYSFS);
+        writeSysfs("export", "17", GPIO_SYSFS);
         try{
            Thread.sleep(100);               //sleep to ensure that gpio is exported
         } catch(InterruptedException e){}
-        writeSysfs("direction", "out", GPIO14_PATH);
+        writeSysfs("direction", "out", GPIO17_PATH);
      }
 	  else if (args[0].equalsIgnoreCase("fanclose")){
         System.out.println("Closing down the LED");
-        writeSysfs("unexport", "14", GPIO_SYSFS);
+        writeSysfs("unexport", "17", GPIO_SYSFS);
      }
      else if (args[0].equalsIgnoreCase("status")){
         try{
@@ -77,7 +77,7 @@ public class LEDExample {
      }
 	  else if (args[0].equalsIgnoreCase("fanstatus")){
         try{
-           BufferedReader br = new BufferedReader(new FileReader(GPIO14_PATH+"value"));
+           BufferedReader br = new BufferedReader(new FileReader(GPIO17_PATH+"value"));
            String line;
            while ((line = br.readLine()) != null) {
               System.out.println(line);
