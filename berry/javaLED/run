@@ -12,3 +12,16 @@ echo "*** Off -- Sleeping for 2 seconds"
 sleep 2
 echo "*** Close the GPIO entry (the LED may remain on)"
 java exploringRPi.LEDExample close
+echo "*** Setting up the LED"
+java exploringRPi.LEDExample fansetup
+echo "*** Turning the LED On"
+java exploringRPi.LEDExample fanon
+echo "*** Displaying the LED status"
+java exploringRPi.LEDExample fanstatus
+echo "*** On -- Sleeping for 2 seconds"
+sleep 2
+java exploringRPi.LEDExample fanoff
+echo "*** Off -- Sleeping for 2 seconds"
+sleep 2
+echo "*** Close the GPIO entry (the LED may remain on)"
+java exploringRPi.LEDExample close
