@@ -34,9 +34,9 @@ public class LEDExample {
         System.out.println("Turning the LED " + args[0]);
         writeSysfs("value", args[0].equalsIgnoreCase("On")? "1":"0", GPIO4_PATH);
      }
-    else if (args[0].equalsIgnoreCase("fanOn") || args[0].equalsIgnoreCase("fanOff")){
-	System.out.println("Turning the fan " + args[0]);
-	writeSysfs("value", args[0].equalsIgnoreCase("fanOn")? "1":"0", GPIO17_PATH);
+	 else if (args[0].equalsIgnoreCase("fanOn") || args[0].equalsIgnoreCase("fanOff")){
+        System.out.println("Turning the fan " + args[0]);
+        writeSysfs("value", args[0].equalsIgnoreCase("fanOn")? "1":"0", GPIO17_PATH);
      }
      else if (args[0].equalsIgnoreCase("setup")){
         System.out.println("Setting up the LED and FAN");
@@ -50,16 +50,16 @@ public class LEDExample {
         System.out.println("Closing down the LED");
         writeSysfs("unexport", "4", GPIO_SYSFS);
      }
-	  else if (args[0].equalsIgnoreCase("fansetup")){
-        System.out.println("Setting up the LED and FAN");
+	 else if (args[0].equalsIgnoreCase("fansetup")){
+        System.out.println("Setting up the FAN");
         writeSysfs("export", "17", GPIO_SYSFS);
         try{
            Thread.sleep(100);               //sleep to ensure that gpio is exported
         } catch(InterruptedException e){}
         writeSysfs("direction", "out", GPIO17_PATH);
      }
-    else if (args[0].equalsIgnoreCase("fanclose")){
-        System.out.println("Closing down the LED");
+	  else if (args[0].equalsIgnoreCase("fanclose")){
+        System.out.println("Closing down the fan");
         writeSysfs("unexport", "17", GPIO_SYSFS);
      }
      else if (args[0].equalsIgnoreCase("status")){
@@ -75,7 +75,7 @@ public class LEDExample {
            System.err.println("Failed to access the sysfs entry: /value");
         }
      }
-	  else if (args[0].equalsIgnoreCase("fanstatus")){
+	 else if (args[0].equalsIgnoreCase("fanstatus")){
         try{
            BufferedReader br = new BufferedReader(new FileReader(GPIO17_PATH+"value"));
            String line;
